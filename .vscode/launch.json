@@ -8,7 +8,7 @@
       "type": "node",
       "request": "launch",
       "name": "Launch Program",
-      "program": "${workspaceFolder}/matrix multiplication.js"
+      "program": "${workspaceFolder}/random numbers.js"
     }
   ]
 }
