@@ -82,8 +82,8 @@ class matrix {
 
 console.time("matrix-multiplication.js");
 // Generate Sample matrices
-var p = new matrix(3, 3, 100, "p");
-var q = new matrix(3, 3, 100, "q");
+var p = new matrix(3, 4, 100, "p");
+var q = new matrix(3, 4, 100, "q");
 
 // generate a result
 var r = p.multiply(q);
