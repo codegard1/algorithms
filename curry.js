@@ -10,11 +10,16 @@ function additionNormal(x, y) {
 }
 
 // Curried function
-function additionCurried(x) {
+function makeAddition(x) {
   return function(y) {
     return x + y;
   };
 }
+
+/**
+ * Usage: 
+ * makeAddition(x)(y) => x + 7
+ */
 
 function curry(f) {
   return function(x) {
