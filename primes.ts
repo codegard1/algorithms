@@ -17,7 +17,7 @@ function divides(a: number, b: number): boolean {
 }
 
 /**
- *
+ * 
  * @param n
  * @param testDivisor
  */
@@ -31,13 +31,21 @@ function findDivisor(n: number, testDivisor: number): number {
   }
 }
 
+/**
+ * Find the smallest divisor for a given number 
+ * @param n the number to test
+ */
 function smallestDivisor(n: number): number {
   return findDivisor(n, 2);
 }
 
+/**
+ * Test whether a number is prime
+ * @param n the number to test for primality
+ */
 function isPrime(n: number): boolean {
   return n === smallestDivisor(n);
 }
 
 const r: boolean = isPrime(101);
-console.log(r);
+console.log(r); // true

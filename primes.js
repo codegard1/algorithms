@@ -37,4 +37,4 @@ function isPrime(n) {
     return n === smallestDivisor(n);
 }
 var r = isPrime(101);
-console.log(r);
+console.log(r); // true
