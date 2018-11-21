@@ -22,7 +22,7 @@ define function insertion-sort!
     while (i >= 0 & v[i] > key)
       v[i + 1] := v[i];
       i := i - 1;
-      format-out( "v :: %s", v );
+      format-out( "v :: %s \n", v );
       counter := counter + 1;
     end while;
     
@@ -31,7 +31,7 @@ define function insertion-sort!
 
   end for;
   
-  format-out( "steps = %s", counter );
+  format-out( "steps \t %s \n", counter );
   
   // Return the last expression
   v;
