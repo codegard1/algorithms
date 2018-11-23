@@ -23,10 +23,10 @@ define function fizzlebuzzle
       z := i;
     end if;
     if (do-output?)
-      print(x, *standard-output*);
-      print(y, *standard-output*);
-      z ~== -1 & print(z, *standard-output*);
-      print("\n", *standard-output*);
+      print-message(x, *standard-output*);
+      print-message(y, *standard-output*);
+      z ~== -1 & print-message(z, *standard-output*);
+      print-message("\n", *standard-output*);
     end if;
   end for;
 end function;
@@ -34,7 +34,7 @@ end function;
 begin
   profiling(cpu-time-seconds, cpu-time-microseconds, allocation)
     for (n from 0 below 10000)
-      fizzlebuzzle(0, 100, #t)
+      fizzlebuzzle(0, 101, #t)
     end for;
   results
     format-out("\nfizzbuzz completed in %d.%s seconds and allocated %s bytes\n",
