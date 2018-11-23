@@ -5,28 +5,39 @@ Synopsis:  Print "Fizz" for each number that is a multiple of 3
 Author: Chris Odegard
 Copyright: 2018
 
+define function fizzlebuzzle 
+  (start :: <integer>, limit :: <integer>, do-output? :: <boolean>)
+  for (i from start below limit)
+    let x :: <string> = "";
+    let y :: <string> = "";
+    let z :: <integer> = -1;
+    let by3 :: <boolean> = modulo(i, 3) == 0;
+    let by5 :: <boolean> = modulo(i, 5) == 0;
+    if(modulo(i, 3) == 0)
+      x := "fizz";
+    end if;
+    if (modulo(i, 5) == 0)
+      y := "buzz";
+    end if;
+    if (~by3 & ~by5)
+      z := i;
+    end if;
+    if (do-output?)
+      print(x, *standard-output*);
+      print(y, *standard-output*);
+      z ~== -1 & print(z, *standard-output*);
+      print("\n", *standard-output*);
+    end if;
+  end for;
+end function;
+
 begin
-  // Configuration
-  let start :: <integer> = 0;
-  let limit :: <integer> = 100;
-  profiling(cpu-time-seconds, cpu-time-microseconds)
-    for (i from start below limit)
-      let x :: <string> = "";
-      if(modulo(i, 3) == 0)
-        x := concatenate(x, "fizz");
-      end if;
-      if (modulo(i, 5) == 0)
-        x := concatenate(x, "buzz");
-      end if;
-      if (modulo(i, 5) ~== 0 & modulo(i, 3) ~== 0)
-        x := integer-to-string(i);
-      end if;
-      format-out("%s\n", x);
+  profiling(cpu-time-seconds, cpu-time-microseconds, allocation)
+    for (n from 0 below 10000)
+      fizzlebuzzle(0, 100, #t)
     end for;
   results
-    format-out("\nfizzbuzz completed in %d.%s seconds\n",
-		    cpu-time-seconds, integer-to-string(cpu-time-microseconds, size: 6));
+    format-out("\nfizzbuzz completed in %d.%s seconds and allocated %s bytes\n",
+		    cpu-time-seconds, integer-to-string(cpu-time-microseconds, size: 6), allocation);
   end profiling;
 end;
-
-
