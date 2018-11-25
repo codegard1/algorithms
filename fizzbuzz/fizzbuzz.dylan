@@ -29,13 +29,11 @@ define function fizzlebuzzle
       print-message("\n", *standard-output*);
     end if;
   end for;
-end function;
+end function fizzlebuzzle;
 
 begin
   profiling(cpu-time-seconds, cpu-time-microseconds, allocation)
-    for (n from 0 below 10000)
-      fizzlebuzzle(0, 101, #t)
-    end for;
+    fizzlebuzzle(0, 101, #t);
   results
     format-out("\nfizzbuzz completed in %d.%s seconds and allocated %s bytes\n",
 		    cpu-time-seconds, integer-to-string(cpu-time-microseconds, size: 6), allocation);
