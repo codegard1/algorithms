@@ -39,6 +39,11 @@ class Matrix {
     }
   }
 
+  /**
+   * Unused
+   * @param arr 
+   * @param name 
+   */
   public setFromArray(arr, name) {
     this.name = name || this.name;
     this.value = arr || [];
@@ -46,32 +51,44 @@ class Matrix {
     this.cols = arr[0] ? arr[0].length : undefined;
   }
 
+  /**
+   * Set the value of a specific cell in the Matrix 
+   * @param i 
+   * @param j 
+   * @param n 
+   */
   public set(i, j, n) {
     this.value[i][j] = n;
   }
 
+  /**
+   * Get the value of a specific cell in the Matrix
+   * @param i 
+   * @param j 
+   */
   public get(i, j) {
     return this.value[i][j];
   }
 
   /**
-   * Element r[i,j] is the dot product of the ith row of p
+   * Element _r[i,j]_ is the dot product of the ith row of p
    * with the jth column of q.
    * The dot product is simply the sum of the N term-by-term
    * multiplications p[i,1]*q[1,j]+p[i,2]*q[i,j]+...p[i,N-1]*q[N-1,j]
    * @param mtx
    */
   public multiply(mtx) {
-    let p: Matrix = this;
-    let q: Matrix = mtx;
-    let pCol = p.cols;
-    let qRows = q.rows;
+    const p: Matrix = this;
+    const q: Matrix = mtx;
+    const pCol = p.cols;
+    const qRows = q.rows;
     p.print();
     q.print();
 
     // result matrix
-    let r = new Matrix(3, 3, 0, "result");
+    let r:Matrix = new Matrix(qRows, pCol, 0, "result");
 
+    console.log(`pCol: ${pCol}   qRows: ${qRows}`);
     //  if p.columns == q.rows
     if (pCol === qRows) {
       // For each row in matrix p
@@ -99,8 +116,8 @@ class Matrix {
 
 console.time("matrix-multiplication.js");
 // Generate Sample matrices
-const p = new Matrix(3, 4, 100, "p");
-const q = new Matrix(3, 4, 100, "q");
+const p = new Matrix(3, 3, 100, "p");
+const q = new Matrix(3, 3, 100, "q");
 
 // generate a result
 const r = p.multiply(q);
