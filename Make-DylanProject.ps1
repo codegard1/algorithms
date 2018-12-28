@@ -26,13 +26,15 @@ Param(
 )
 
 # Invoke Build Tool
-Write-Host "About to build project $($ProjectName) from $($LidFileName)" -ForegroundColor Magenta
+Write-Host "Build project $($ProjectName) from $($LidFileName)`n..." -ForegroundColor Yellow
 Start-Sleep -Seconds 1
 Invoke-Expression -Command "dylan-compiler-with-tools.exe /build .\$($LidFileName)"
 
 # Invoke the Executable
 If($true -eq (Test-Path -Path $ExecutableLocation)){
-  Write-Host "About to run $($ExecutableName) from $($ExecutableLocation)" -ForegroundColor Magenta
+  Write-Host "`nRun $($ExecutableName) from $($ExecutableLocation)" -ForegroundColor Yellow
+  Write-Host "..."
   Start-Sleep -Seconds 1
+  Write-Host "GO`n" -ForegroundColor Yellow
   Invoke-Expression $ExecutableLocation
 }
