@@ -14,14 +14,13 @@ end class <matrix>;
 define method initialize (m :: <matrix>, #key)
   next-method();
   format-out("creating matrix... \n");
-  let dims = make(<vector>, size: cols(m), fill: rows(m));
-  let v = make(<array>, dimensions: dims, fill: 0);
-  for (i from 0 below rank(v))
-    for(j from 0 below dimension(v, i))
+  let v = make(<array>, dimensions: list(m.cols, m.rows), fill: 0);
+  for (i from 0 below m.cols)
+    for(j from 0 below m.rows)
       let upperbound :: <integer> = 100 * multiplier(m);
       let r :: <integer> = random(upperbound);
-      format-out(interger-to-string(r))
-      aref-setter(r, v, i, j, 0);
+      format-out("%d", r);
+      aref-setter(r, v, i, j);
     end for;
     format-out("\n");
   end for;
@@ -32,7 +31,7 @@ define method print-matrix (m :: <matrix>)
   format-out("[");
   for (i from 0 below rows(m))
     for (j from 0 below cols(m))
-      format-out(integer-to-string(aref(m.value, j, i, 0)));
+      format-out(integer-to-string(aref(m.value, j, i)));
       if (j < (rows(m)) - 1)
         format-out(",  ");
       else 
