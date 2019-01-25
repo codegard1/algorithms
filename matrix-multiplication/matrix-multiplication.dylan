@@ -19,7 +19,6 @@ define method initialize (m :: <matrix>, #key)
     for(j from 0 below m.rows)
       let upperbound :: <integer> = 100 * multiplier(m);
       let r :: <integer> = random(upperbound);
-      format-out("%d", r);
       aref-setter(r, v, i, j);
     end for;
     format-out("\n");
@@ -31,15 +30,14 @@ define method print-matrix (m :: <matrix>)
   format-out("[");
   for (i from 0 below rows(m))
     for (j from 0 below cols(m))
-      format-out(integer-to-string(aref(m.value, j, i)));
+      format-out("%d",aref(m.value, j, i));
       if (j < (rows(m)) - 1)
         format-out(",  ");
       else 
-        format-out("\n");
+        format-out("]\n");
       end if;
     end for;
   end for;
-  format-out("]\n");
   concatenate("\n", name(m), "\n");
 end method;
 
