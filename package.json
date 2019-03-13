@@ -1,0 +1,17 @@
+{
+  "name": "algorithms",
+  "description": "Algorithms and small code experiments",
+  "author": "Chris Odegard <c.odegard@gmail.com>",
+  "version": "0.1.0",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/codegard1/algorithms"
+  },
+  "main": "index.js",
+  "private": true,
+  "dependencies": {
+    "@types/node": "^11.11.3"
+  },
+  "devDependencies": {},
+  "scripts": {}
+}

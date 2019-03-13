@@ -7,7 +7,10 @@
       "es2016",
       "dom"
     ],
-    "sourceMap": true
+    "sourceMap": true,
+    "types": [
+      "node"
+    ]
   },
   "exclude": [
     "node_modules",
