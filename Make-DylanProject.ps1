@@ -22,7 +22,7 @@ Param(
   $LidFileName = "$($ProjectName).lid",
   [Parameter(Mandatory = $false)]
   [String]
-  $ExecutableLocation = "C:\Users\n5014\Documents\DylanRoot\bin\$($ExecutableName)"
+  $ExecutableLocation = "$($ENV:OPEN_DYLAN_USER_ROOT)\bin\$($ExecutableName)"
 )
 
 # Invoke Build Tool
@@ -37,4 +37,7 @@ If($true -eq (Test-Path -Path $ExecutableLocation)){
   Start-Sleep -Seconds 1
   Write-Host "GO`n" -ForegroundColor Yellow
   Invoke-Expression $ExecutableLocation
+} Else {
+  Write-Host "Error: Executable location $($ExecutableLocation) did not pass muster." -ForegroundColor Red
+  Write-Host "`t Is OPEN_DYLAN_USER_ROOT defined? `t ($($ENV:OPEN_DYLAN_USER_ROOT))" -ForegroundColor Yellow
 }
