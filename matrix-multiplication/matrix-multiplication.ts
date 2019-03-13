@@ -30,7 +30,7 @@ class Matrix {
     return this;
   }
 
-  public print() {
+  public print(): void {
     console.log("Matrix: " + this.name);
     let m: Array<Array<number>> = this.value;
 
@@ -57,7 +57,7 @@ class Matrix {
    * @param j 
    * @param n 
    */
-  public set(i, j, n) {
+  public set(i: number, j: number, n: number) {
     this.value[i][j] = n;
   }
 
@@ -77,7 +77,7 @@ class Matrix {
    * multiplications p[i,1]*q[1,j]+p[i,2]*q[i,j]+...p[i,N-1]*q[N-1,j]
    * @param mtx
    */
-  public multiply(mtx) {
+  public multiply(mtx: Matrix): Matrix {
     const p: Matrix = this;
     const q: Matrix = mtx;
     const pCol = p.cols;
@@ -86,7 +86,7 @@ class Matrix {
     q.print();
 
     // result matrix
-    let r:Matrix = new Matrix(qRows, pCol, 0, "result");
+    let r: Matrix = new Matrix(qRows, pCol, 0, "result");
 
     console.log(`pCol: ${pCol}   qRows: ${qRows}`);
     //  if p.columns == q.rows
@@ -114,15 +114,19 @@ class Matrix {
   }
 }
 
-console.time("matrix-multiplication.js");
-// Generate Sample matrices
-const p = new Matrix(3, 3, 100, "p");
-const q = new Matrix(3, 3, 100, "q");
+!function (): boolean {
 
-// generate a result
-const r = p.multiply(q);
+  console.time("matrix-multiplication.js");
+  // Generate Sample matrices
+  const p: Matrix = new Matrix(3, 3, 100, "p");
+  const q: Matrix = new Matrix(3, 3, 100, "q");
 
-// Print the result
-r.print();
+  // generate a result
+  const r = p.multiply(q);
 
-console.timeEnd("matrix-multiplication.js");
+  // Print the result
+  r.print();
+
+  console.timeEnd("matrix-multiplication.js");
+  return true;
+}();

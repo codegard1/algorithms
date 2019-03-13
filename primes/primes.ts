@@ -47,5 +47,11 @@ function isPrime(n: number): boolean {
   return n === smallestDivisor(n);
 }
 
-const r: boolean = isPrime(101);
-console.log(r); // true
+
+!function (): boolean {
+  const r: boolean = isPrime(101);
+  console.log(r);
+  return r; // true
+}();
+
+
