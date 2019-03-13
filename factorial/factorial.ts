@@ -13,5 +13,10 @@ function factorial(n: number): number {
   }
 }
 
-var r: number = factorial(5);
-console.log(r); // 120
+!function (): boolean {
+  var r: number = factorial(5);
+
+  console.log(r); // 120
+  return true;
+}
+
