@@ -41,5 +41,9 @@ function countChange(amount: number): number {
   return cc(amount, 5);
 }
 
-var r:number = countChange(100);
-console.log(r); // 292
+!function (): boolean {
+  var r: number = countChange(100);
+  console.log(r); // 292
+
+  return true;
+}();
